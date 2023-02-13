@@ -3,6 +3,8 @@ const express = require('express');
 const userRoute = require('./Router/userRoutes');
 const clientRoute = require('./Router/clientRoutes');
 const lawyerRoute = require('./Router/lawyerRoute');
+const conversationRoute = require('./Router/conversationRoutes');
+const messageRoute = require('./Router/messageRoutes');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -75,6 +77,8 @@ app.use((req, res, next) => {
 app.use('/api/v1/users', userRoute);
 app.use('/api/v1/clients', clientRoute);
 app.use('/api/v1/lawyers', lawyerRoute);
+app.use("/api/v1/conversations", conversationRoute);
+app.use("/api/v1/messages", messageRoute);
 
 
 app.all('*', (req, res, next) => {
